@@ -3,7 +3,7 @@ import ListProductService from "@ProductServices/ListProductService";
 import ShowProductService from "@ProductServices/ShowProductService";
 import CreateProductService from "@ProductServices/CreateProductService";
 import UpdateProductService from "@ProductServices/UpdateProductService";
-import DeleteProductService from "../services/DeleteProductService";
+import DeleteProductService from "@ProductServices/DeleteProductService";
 
 export default class ProductsController {
   public async index(req: Request, res: Response): Promise<Response> {
