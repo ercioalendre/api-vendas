@@ -63,10 +63,12 @@
       ],
       "@ProductsServices/*": [
         "src/modules/products/services/*"
-      ]
-      ,
+      ],
       "@ProductsController": [
         "src/modules/products/controller/ProductsController.ts"
+      ],
+      "@ProductsRoutes": [
+        "src/modules/products/routes/products.routes.ts"
       ]
     },                                 /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
     // "rootDirs": [],                              /* List of root folders whose combined content represents the structure of the project at runtime. */
