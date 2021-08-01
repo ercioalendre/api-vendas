@@ -55,8 +55,8 @@
       "@shared/*": [
         "src/shared/*"
       ],
-      "@entities/*": [
-        "src/modules/products/typeorm/entities/*"
+      "@ProductsEntities": [
+        "src/modules/products/typeorm/entities/Product.ts"
       ],
       "@repositories/*": [
         "src/modules/products/typeorm/repositories/*"
