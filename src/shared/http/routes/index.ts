@@ -1,8 +1,5 @@
-import { Router } from 'express';
+import productsRouter from "@ProductsRoutes";
+import { Router } from "express";
 const router = Router();
-router.get('/', (req, res) => {
-  res.json({
-    message: 'Hello World!',
-  });
-});
+router.use("/products", productsRouter);
 export default router;
