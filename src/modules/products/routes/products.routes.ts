@@ -1,5 +1,6 @@
 import { Router } from "express";
 import ProductsController from "@ProductsController";
+import { errors as celebrateErrors } from "celebrate";
 
 const productsRouter = Router();
 const productsController = new ProductsController();
