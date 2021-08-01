@@ -22,7 +22,7 @@ class UpdateProductService {
     const product = await productRepository.findOne(id);
 
     if (!product) {
-      throw new AppError("The product you were looking for wasn't found.");
+      throw new AppError("The product you were trying to edit wasn't found.");
     }
 
     const productExists = await productRepository.findByName(name);
