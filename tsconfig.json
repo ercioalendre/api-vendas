@@ -58,8 +58,8 @@
       "@ProductsEntities": [
         "src/modules/products/typeorm/entities/Product.ts"
       ],
-      "@repositories/*": [
-        "src/modules/products/typeorm/repositories/*"
+      "@ProductsRepositories": [
+        "src/modules/products/typeorm/repositories/ProductsRepository.ts"
       ],
       "@ProductsServices/*": [
         "src/modules/products/services/*"
