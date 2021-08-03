@@ -1,3 +1,4 @@
+import jwt from "@config/auth/jwt";
 import { getCustomRepository } from "typeorm";
 import AppError from "@shared/errors/AppError";
 import User from "@UsersEntities";
@@ -29,9 +30,9 @@ class CreateSessionsService {
       );
     }
 
-    const token = sign({}, "3ef42d1353b256c8c1bd8120028c185c", {
+    const token = sign({}, jwt.secret, {
       subject: user.id,
-      expiresIn: "1d",
+      expiresIn: jwt.expiresIn,
     });
 
     return {
