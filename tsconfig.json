@@ -82,6 +82,9 @@
       "@UsersController": [
         "src/modules/users/controller/UsersController.ts"
       ],
+      "@UserAvatarController": [
+        "src/modules/users/controller/UserAvatarController.ts"
+      ],
       "@UsersServices/*": [
         "src/modules/users/services/*"
       ],
