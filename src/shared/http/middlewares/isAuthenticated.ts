@@ -3,6 +3,12 @@ import AppError from "@shared/errors/AppError";
 import { NextFunction, Request, Response } from "express";
 import { verify } from "jsonwebtoken";
 
+interface TokenPayLoad {
+  iat: number;
+  ext: number;
+  sub: string;
+}
+
 export default function isAuthenticated(
   req: Request,
   res: Response,
@@ -17,7 +23,13 @@ export default function isAuthenticated(
   const [, token] = headerAuth.split(" ");
 
   try {
-    verify(token, jwt.secret);
+    const decodedToken = verify(token, jwt.secret);
+    const { sub } = decodedToken as TokenPayLoad;
+
+    req.user = {
+      id: sub,
+    };
+
     return next();
   } catch {
     throw new AppError("Invalid token.", 401);
