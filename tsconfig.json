@@ -55,6 +55,9 @@
       "@shared/*": [
         "src/shared/*"
       ],
+      "@middlewares/*": [
+        "src/shared/http/middlewares/*"
+      ],
       "@ProductsEntities": [
         "src/modules/products/typeorm/entities/Product.ts"
       ],
