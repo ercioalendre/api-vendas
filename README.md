@@ -6,8 +6,6 @@
 
 This project was developed with the following technologies:
 
-- HTML
-- CSS
 - TypeScript
 - NodeJS
 - Express
@@ -50,4 +48,4 @@ That's it! You can now see it up and running on [http://localhost:3000](http://l
 
 ## :memo: License
 
-This project is under MIT license. See the file [LICENSE](.github/LICENSE) for further details.
+This project is under MIT license. See the file [LICENSE](LICENSE) for further details.
