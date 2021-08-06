@@ -19,7 +19,7 @@ This project was developed with the following technologies:
 
 ```sh
 $ git clone https://github.com/ercioalendre/api-vendas.git
-$ cd Rocket.Q
+$ cd api-vendas
 ```
 
 or [download it here](https://github.com/ercioalendre/api-vendas/archive/refs/heads/main.zip).
