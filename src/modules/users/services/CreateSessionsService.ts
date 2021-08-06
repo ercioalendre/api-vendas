@@ -1,7 +1,7 @@
 import jwt from "@config/auth/jwt";
 import { getCustomRepository } from "typeorm";
 import AppError from "@shared/errors/AppError";
-import User from "@UsersEntities";
+import User from "@UsersEntities/User";
 import UsersRepository from "@UsersRepositories";
 import { compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";

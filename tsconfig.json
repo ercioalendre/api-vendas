@@ -76,8 +76,8 @@
       "@ProductsRoutes": [
         "src/modules/products/routes/products.routes.ts"
       ],
-      "@UsersEntities": [
-        "src/modules/users/typeorm/entities/User.ts"
+      "@UsersEntities/*": [
+        "src/modules/users/typeorm/entities/*"
       ],
       "@UsersRepositories": [
         "src/modules/users/typeorm/repositories/UsersRepository.ts"
