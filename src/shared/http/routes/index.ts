@@ -1,9 +1,12 @@
 import sessionsRouter from "@SessionsRoutes";
 import usersRouter from "@UsersRoutes";
 import productsRouter from "@ProductsRoutes";
-import { Router } from "express";
-const router = Router();
+import uploadConfig from "@config/upload";
+import isAuthenticated from "@middlewares/isAuthenticated";
+import express from "express";
+const router = express.Router();
 router.use("/products", productsRouter);
 router.use("/users", usersRouter);
 router.use("/sessions", sessionsRouter);
+router.use("/uploads", isAuthenticated, express.static(uploadConfig.directory));
 export default router;
