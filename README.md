@@ -22,7 +22,7 @@ $ cd api-vendas
 
 or [download it here](https://github.com/ercioalendre/api-vendas/archive/refs/heads/main.zip).
 
-#### 2. Install all dependencies
+#### 2. Install necessary dependencies
 
 ```sh
 # with npm
