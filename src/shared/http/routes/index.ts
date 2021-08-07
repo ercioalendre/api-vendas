@@ -1,5 +1,5 @@
 import sessionsRouter from "@SessionsRoutes";
-import usersRouter from "@UsersRoutes";
+import usersRouter from "@UsersRoutes/users.routes";
 import productsRouter from "@ProductsRoutes/products.routes";
 import uploadConfig from "@config/upload";
 import isAuthenticated from "@middlewares/isAuthenticated";
