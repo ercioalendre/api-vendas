@@ -1,6 +1,6 @@
 import sessionsRouter from "@SessionsRoutes";
 import usersRouter from "@UsersRoutes";
-import productsRouter from "@ProductsRoutes";
+import productsRouter from "@ProductsRoutes/products.routes";
 import uploadConfig from "@config/upload";
 import isAuthenticated from "@middlewares/isAuthenticated";
 import express from "express";

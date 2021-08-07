@@ -73,8 +73,8 @@
       "@ProductsControllers/*": [
         "src/modules/products/controllers/*"
       ],
-      "@ProductsRoutes": [
-        "src/modules/products/routes/products.routes.ts"
+      "@ProductsRoutes/*": [
+        "src/modules/products/routes/*"
       ],
       "@UsersEntities/*": [
         "src/modules/users/typeorm/entities/*"
