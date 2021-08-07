@@ -82,11 +82,11 @@
       "@UsersRepositories/*": [
         "src/modules/users/typeorm/repositories/*"
       ],
-      "@UsersController": [
-        "src/modules/users/controller/UsersController.ts"
+      "@UsersControllers/*": [
+        "src/modules/users/controllers/*"
       ],
       "@UserAvatarController": [
-        "src/modules/users/controller/UserAvatarController.ts"
+        "src/modules/users/controllers/UserAvatarController.ts"
       ],
       "@UsersServices/*": [
         "src/modules/users/services/*"
@@ -95,7 +95,7 @@
         "src/modules/users/routes/users.routes.ts"
       ],
       "@SessionsController": [
-        "src/modules/users/controller/SessionsController.ts"
+        "src/modules/users/controllers/SessionsController.ts"
       ],
       "@SessionsRoutes": [
         "src/modules/users/routes/sessions.routes.ts"
