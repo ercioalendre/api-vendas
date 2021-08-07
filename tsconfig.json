@@ -70,8 +70,8 @@
       "@ProductsServices/*": [
         "src/modules/products/services/*"
       ],
-      "@ProductsController": [
-        "src/modules/products/controller/ProductsController.ts"
+      "@ProductsControllers/*": [
+        "src/modules/products/controllers/*"
       ],
       "@ProductsRoutes": [
         "src/modules/products/routes/products.routes.ts"

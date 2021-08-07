@@ -1,5 +1,5 @@
 import { Router } from "express";
-import ProductsController from "@ProductsController";
+import ProductsController from "@ProductsControllers/ProductsController";
 import { celebrate, Segments, Joi } from "celebrate";
 
 const productsRouter = Router();
