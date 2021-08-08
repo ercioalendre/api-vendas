@@ -5,7 +5,7 @@ import cors from "cors";
 import routes from "@MainRoutes";
 import AppError from "@shared/errors/AppError";
 import express, { Express, NextFunction, Request, Response } from "express";
-import { errors as celebrateErrors } from "celebrate";
+import { isCelebrateError } from "celebrate";
 
 class AppController {
   express: Express;
@@ -19,7 +19,6 @@ class AppController {
   middlewares() {
     this.express.use(express.json());
     this.express.use(cors());
-    this.express.use(celebrateErrors());
   }
 
   routes() {
@@ -34,6 +33,15 @@ class AppController {
           return res.status(error.statusCode).json({
             status: "error",
             message: error.message,
+          });
+        }
+        if (isCelebrateError(error)) {
+          const errorBody = error.details.get("body");
+          const celebrateErrorMessage =
+            errorBody != undefined ? errorBody.message : undefined;
+          return res.status(401).json({
+            status: "error",
+            message: celebrateErrorMessage,
           });
         }
         console.log(error);
