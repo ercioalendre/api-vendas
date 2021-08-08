@@ -7,11 +7,11 @@ import UserTokensRepository from "@UsersRepositories/UserTokensRepository";
 
 interface IRequest {
   token: string;
-  password: string;
+  newPassword: string;
 }
 
 class ResetPasswordService {
-  public async execute({ token, password }: IRequest): Promise<void> {
+  public async execute({ token, newPassword }: IRequest): Promise<void> {
     const usersRepository = getCustomRepository(UsersRepository);
     const userTokensRepository = getCustomRepository(UserTokensRepository);
     const userToken = await userTokensRepository.findByToken(token);
@@ -33,7 +33,9 @@ class ResetPasswordService {
       throw new AppError("Token expired.", 401);
     }
 
-    user.password = await hash(password, 8);
+    user.password = await hash(newPassword, 8);
+
+    await usersRepository.save(user);
   }
 }
 
