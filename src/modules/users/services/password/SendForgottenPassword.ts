@@ -3,6 +3,7 @@ import AppError from "@shared/errors/AppError";
 import UsersRepository from "@UsersRepositories/UsersRepository";
 import UserTokensRepository from "@UsersRepositories/UserTokensRepository";
 import EtherealMail from "@config/mail/EtherealMail";
+import path from "path";
 
 interface IRequest {
   email: string;
@@ -22,6 +23,14 @@ class SendForgottenPassword {
 
     console.log(token);
 
+    const forgottenPasswordTemplate = path.resolve(
+      __dirname,
+      "..",
+      "..",
+      "views",
+      "forgotten-password.hbs",
+    );
+
     await EtherealMail.sendMail({
       to: {
         name: user.name,
@@ -29,10 +38,10 @@ class SendForgottenPassword {
       },
       subject: "Password Recovery",
       templateData: {
-        template: `Hello {{name}}! Here's your token to change your password: {{token}}`,
+        file: forgottenPasswordTemplate,
         variables: {
           name: user.name,
-          token,
+          link: `http://localhost:3000/password/reset/${token}`,
         },
       },
     });
