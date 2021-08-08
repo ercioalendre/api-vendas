@@ -3,7 +3,8 @@ import ResetPasswordService from "@UsersServices/password/ResetPasswordService";
 
 export default class ResetPasswordController {
   public async create(req: Request, res: Response): Promise<Response> {
-    const { token, newPassword } = req.body;
+    const { newPassword } = req.body;
+    const { token } = req.params;
 
     const resetPassword = new ResetPasswordService();
 
