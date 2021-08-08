@@ -18,13 +18,23 @@ class SendForgottenPassword {
       throw new AppError("User was not found.", 401);
     }
 
-    const token = await userTokensRepository.generate(user.id);
+    const { token } = await userTokensRepository.generate(user.id);
 
     console.log(token);
 
     await EtherealMail.sendMail({
-      to: email,
-      body: `here's your token to change your password: ${token.token}`,
+      to: {
+        name: user.name,
+        email: user.email,
+      },
+      subject: "Password Recovery",
+      templateData: {
+        template: `Hello {{name}}! Here's your token to change your password: {{token}}`,
+        variables: {
+          name: user.name,
+          token,
+        },
+      },
     });
   }
 }
