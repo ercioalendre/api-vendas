@@ -2,7 +2,7 @@ import nodemailer from "nodemailer";
 import handlebarsMailTemplate from "@config/mail/HandlebarsMailTemplate";
 
 interface ITemplateVariables {
-  [key: string]: number;
+  [key: string]: any;
 }
 
 interface IParseMailTemplate {
