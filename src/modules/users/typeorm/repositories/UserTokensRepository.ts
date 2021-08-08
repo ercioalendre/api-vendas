@@ -15,7 +15,7 @@ class UserTokensRepository extends Repository<UserToken> {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  public async generate(user_id: string): Promise<UserToken | any> {
+  public async generate(user_id: string): Promise<UserToken> {
     const userToken = await this.create({
       user_id,
     });
