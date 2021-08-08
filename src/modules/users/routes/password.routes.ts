@@ -18,14 +18,16 @@ PasswordRouter.post(
 );
 
 PasswordRouter.post(
-  "/reset",
+  "/reset/:token",
   celebrate({
     [Segments.BODY]: {
-      token: Joi.string().uuid().required(),
       newPassword: Joi.string().required(),
       newPasswordConfirmation: Joi.string()
         .required()
         .valid(Joi.ref("newPassword")),
+    },
+    [Segments.PARAMS]: {
+      token: Joi.string().uuid().required(),
     },
   }),
   resetPasswordController.create,
