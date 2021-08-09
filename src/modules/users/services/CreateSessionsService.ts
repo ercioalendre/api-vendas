@@ -1,7 +1,6 @@
 import jwt from "@config/auth/jwt";
 import { getCustomRepository } from "typeorm";
 import AppError from "@shared/errors/AppError";
-import User from "@UsersEntities/User";
 import UsersRepository from "@UsersRepositories/UsersRepository";
 import { compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
@@ -12,8 +11,8 @@ interface IRequest {
 }
 
 interface IResponse {
-  user: User;
   token: string;
+  user: Record<string, unknown>;
 }
 
 class CreateSessionsService {
@@ -35,8 +34,16 @@ class CreateSessionsService {
       expiresIn: jwt.expiresIn,
     });
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { password: pw, created_at, updated_at, ...userProfileData } = user;
+
     return {
-      user,
+      user: {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        avatar: user.avatar,
+      },
       token,
     };
   }
