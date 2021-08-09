@@ -4,19 +4,22 @@ import User from "@UsersEntities/User";
 import AppError from "@shared/errors/AppError";
 
 interface IRequest {
-  user_id: string;
+  userId: string;
 }
 
 class ShowUserProfileService {
-  public async execute({ user_id }: IRequest): Promise<User> {
+  public async execute({ userId }: IRequest): Promise<User> {
     const usersRepository = getCustomRepository(UsersRepository);
-    const user = await usersRepository.findById(user_id);
+    const user = await usersRepository.findById(userId);
 
     if (!user) {
       throw new AppError("User was not found.", 401);
     }
 
-    return user;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { password, created_at, updated_at, ...userProfileData } = user;
+
+    return userProfileData as User;
   }
 }
 
