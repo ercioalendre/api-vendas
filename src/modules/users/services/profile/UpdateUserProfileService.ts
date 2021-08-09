@@ -36,7 +36,10 @@ class UpdateUserProfileService {
 
     await usersRepository.save(user);
 
-    return user;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { password, created_at, updated_at, ...userProfileData } = user;
+
+    return userProfileData as User;
   }
 }
 
