@@ -26,10 +26,11 @@ or [download it here](https://github.com/ercioalendre/api-vendas/archive/refs/he
 
 ```sh
 # with npm
-npm ci
+$ npm ci
 
 # with yarn
-yarn
+$ rm -rf node_modules
+$ yarn install --frozen-lockfile
 ```
 
 #### 3. Start the server
