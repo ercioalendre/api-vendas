@@ -31,8 +31,11 @@ class UpdateUserProfileService {
       }
     }
 
+    if (newEmail) {
+      user.email = newEmail;
+    }
+
     user.name = newName;
-    user.email = newEmail;
 
     await usersRepository.save(user);
 
@@ -43,4 +46,5 @@ class UpdateUserProfileService {
   }
 }
 
-export default UpdateUserProfileService;
+export const updateUserProfileService = new UpdateUserProfileService();
+export default updateUserProfileService;

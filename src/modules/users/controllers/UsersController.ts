@@ -1,12 +1,10 @@
 import { Request, Response } from "express";
-import ListUserService from "@UsersServices/ListUserService";
-import CreateUserService from "@UsersServices/CreateUserService";
+import listUserService from "@UsersServices/ListUserService";
+import createUserService from "@UsersServices/CreateUserService";
 
-export default class UsersController {
+class UsersController {
   public async index(req: Request, res: Response): Promise<Response> {
-    const listUser = new ListUserService();
-
-    const users = await listUser.execute();
+    const users = await listUserService.execute();
 
     return res.json(users);
   }
@@ -14,9 +12,7 @@ export default class UsersController {
   public async create(req: Request, res: Response): Promise<Response> {
     const { name, email, password } = req.body;
 
-    const createUser = new CreateUserService();
-
-    const user = await createUser.execute({
+    const user = await createUserService.execute({
       name,
       email,
       password,
@@ -25,3 +21,6 @@ export default class UsersController {
     return res.json(user);
   }
 }
+
+export const usersController = new UsersController();
+export default usersController;

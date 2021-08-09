@@ -12,4 +12,5 @@ class ListUserService {
   }
 }
 
-export default ListUserService;
+export const listUserService = new ListUserService();
+export default listUserService;

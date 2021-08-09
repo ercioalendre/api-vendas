@@ -1,13 +1,11 @@
 import { Request, Response } from "express";
-import CreateSessionsService from "@UsersServices/CreateSessionsService";
+import createSessionsService from "@UsersServices/CreateSessionsService";
 
-export default class SessionsController {
+class SessionsController {
   public async create(req: Request, res: Response): Promise<Response> {
     const { email, password } = req.body;
 
-    const createSession = new CreateSessionsService();
-
-    const user = await createSession.execute({
+    const user = await createSessionsService.execute({
       email,
       password,
     });
@@ -15,3 +13,6 @@ export default class SessionsController {
     return res.json(user);
   }
 }
+
+export const sessionsController = new SessionsController();
+export default sessionsController;

@@ -36,4 +36,5 @@ class CreateUserService {
   }
 }
 
-export default CreateUserService;
+export const createUserService = new CreateUserService();
+export default createUserService;

@@ -1,14 +1,11 @@
 import { Router } from "express";
 import { celebrate, Segments, Joi } from "celebrate";
-import ForgottenPasswordController from "@UsersControllers/password/ForgottenPasswordController";
-import ResetPasswordController from "@UsersControllers/password/ResetPasswordController";
-import ChangePasswordController from "@UsersControllers/password/ChangePasswordController";
+import forgottenPasswordController from "@UsersControllers/password/ForgottenPasswordController";
+import resetPasswordController from "@UsersControllers/password/ResetPasswordController";
+import changePasswordController from "@UsersControllers/password/ChangePasswordController";
 import isAuthenticated from "@shared/http/middlewares/isAuthenticated";
 
 const PasswordRouter = Router();
-const changePasswordController = new ChangePasswordController();
-const forgottenPasswordController = new ForgottenPasswordController();
-const resetPasswordController = new ResetPasswordController();
 
 PasswordRouter.put(
   "/change",

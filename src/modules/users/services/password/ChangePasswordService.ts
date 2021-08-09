@@ -59,4 +59,5 @@ class ChangePasswordService {
   }
 }
 
-export default ChangePasswordService;
+export const changePasswordService = new ChangePasswordService();
+export default changePasswordService;

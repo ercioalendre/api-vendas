@@ -39,4 +39,5 @@ class ResetPasswordService {
   }
 }
 
-export default ResetPasswordService;
+export const resetPasswordService = new ResetPasswordService();
+export default resetPasswordService;

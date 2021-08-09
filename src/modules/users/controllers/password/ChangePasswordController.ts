@@ -1,14 +1,12 @@
 import { Request, Response } from "express";
-import ChangePasswordService from "@UsersServices/password/ChangePasswordService";
+import { changePasswordService } from "@UsersServices/password/ChangePasswordService";
 
-export default class ChangePasswordController {
+class ChangePasswordController {
   public async update(req: Request, res: Response): Promise<Response> {
     const userId = req.user.id || "";
     const { currentPassword, newPassword, newPasswordConfirmation } = req.body;
 
-    const changePassword = new ChangePasswordService();
-
-    const user = await changePassword.execute({
+    const user = await changePasswordService.execute({
       userId,
       currentPassword,
       newPassword,
@@ -18,3 +16,6 @@ export default class ChangePasswordController {
     return res.json(user);
   }
 }
+
+export const changePasswordController = new ChangePasswordController();
+export default changePasswordController;

@@ -1,13 +1,12 @@
 import { Request, Response } from "express";
-import ShowUserProfileService from "@UsersServices/profile/ShowUserProfileService";
-import UpdateUserProfileService from "@UsersServices/profile/UpdateUserProfileService";
+import showUserProfileService from "@UsersServices/profile/ShowUserProfileService";
+import updateUserProfileService from "@UsersServices/profile/UpdateUserProfileService";
 
-export default class ProfileController {
+class ProfileController {
   public async show(req: Request, res: Response): Promise<Response> {
     const userId = req.user.id || "";
-    const showProfile = new ShowUserProfileService();
 
-    const user = await showProfile.execute({ userId });
+    const user = await showUserProfileService.execute({ userId });
 
     return res.json(user);
   }
@@ -16,9 +15,7 @@ export default class ProfileController {
     const userId = req.user.id || "";
     const { newName, newEmail } = req.body;
 
-    const updateProfile = new UpdateUserProfileService();
-
-    const user = await updateProfile.execute({
+    const user = await updateUserProfileService.execute({
       userId,
       newName,
       newEmail,
@@ -27,3 +24,6 @@ export default class ProfileController {
     return res.json(user);
   }
 }
+
+export const profileController = new ProfileController();
+export default profileController;
