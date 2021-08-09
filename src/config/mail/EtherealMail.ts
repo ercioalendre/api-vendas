@@ -2,6 +2,7 @@ import nodemailer from "nodemailer";
 import handlebarsMailTemplate from "@config/mail/HandlebarsMailTemplate";
 
 interface ITemplateVariables {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any;
 }
 
