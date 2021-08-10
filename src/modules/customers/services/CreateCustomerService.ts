@@ -1,7 +1,7 @@
 import { getCustomRepository } from "typeorm";
-import AppError from "@shared/errors/AppError";
 import Customer from "@CustomersEntities/CustomerEntity";
 import CustomersRepository from "@CustomersRepositories/CustomersRepository";
+import AppError from "@shared/errors/AppError";
 
 interface IRequest {
   name: string;
@@ -25,9 +25,9 @@ class CreateCustomerService {
     await customersRepository.save(customer);
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { created_at, updated_at, ...customerProfileData } = customer;
+    const { created_at, updated_at, ...customerData } = customer;
 
-    return customerProfileData as Customer;
+    return customerData as Customer;
   }
 }
 
