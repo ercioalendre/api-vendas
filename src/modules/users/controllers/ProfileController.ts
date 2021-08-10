@@ -13,12 +13,12 @@ class ProfileController {
 
   public async update(req: Request, res: Response): Promise<Response> {
     const userId = req.user.id || "";
-    const { newName, newEmail } = req.body;
+    const { newUserName, newUserEmail } = req.body;
 
     const user = await updateUserProfileService.execute({
       userId,
-      newName,
-      newEmail,
+      newUserName,
+      newUserEmail,
     });
 
     return res.json(user);
