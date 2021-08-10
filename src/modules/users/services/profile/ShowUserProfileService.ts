@@ -1,6 +1,6 @@
 import { getCustomRepository } from "typeorm";
 import UsersRepository from "@UsersRepositories/UsersRepository";
-import User from "@UsersEntities/User";
+import User from "@UsersEntities/UserEntity";
 import AppError from "@shared/errors/AppError";
 
 interface IRequest {

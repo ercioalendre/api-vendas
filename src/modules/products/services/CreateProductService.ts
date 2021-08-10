@@ -1,7 +1,7 @@
 import { getCustomRepository } from "typeorm";
 import { ProductRepository } from "@ProductsRepositories";
 import AppError from "@shared/errors/AppError";
-import Product from "@ProductsEntities";
+import Product from "@ProductsEntities/ProductEntity";
 
 interface IRequest {
   name: string;
@@ -30,4 +30,5 @@ class CreateProductService {
   }
 }
 
-export default CreateProductService;
+export const createProductService = new CreateProductService();
+export default createProductService;

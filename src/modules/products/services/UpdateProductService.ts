@@ -1,6 +1,6 @@
 import { getCustomRepository } from "typeorm";
 import { ProductRepository } from "@ProductsRepositories";
-import Product from "@ProductsEntities";
+import Product from "@ProductsEntities/ProductEntity";
 import AppError from "@shared/errors/AppError";
 
 interface IRequest {
@@ -41,4 +41,5 @@ class UpdateProductService {
   }
 }
 
-export default UpdateProductService;
+export const updateProductService = new UpdateProductService();
+export default updateProductService;

@@ -1,6 +1,6 @@
 import { getCustomRepository } from "typeorm";
 import AppError from "@shared/errors/AppError";
-import User from "@UsersEntities/User";
+import User from "@UsersEntities/UserEntity";
 import UsersRepository from "@UsersRepositories/UsersRepository";
 import uploadConfig from "@config/upload";
 import path from "path";

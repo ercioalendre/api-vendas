@@ -1,5 +1,5 @@
 import { EntityRepository, Repository } from "typeorm";
-import UserToken from "@UsersEntities/UserToken";
+import UserToken from "@UsersEntities/UserTokenEntity";
 
 @EntityRepository(UserToken)
 class UserTokensRepository extends Repository<UserToken> {
