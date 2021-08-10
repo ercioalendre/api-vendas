@@ -61,8 +61,8 @@
       "@MainRoutes": [
         "src/shared/http/routes/index.ts"
       ],
-      "@ProductsEntities": [
-        "src/modules/products/typeorm/entities/Product.ts"
+      "@ProductsEntities/*": [
+        "src/modules/products/typeorm/entities/*"
       ],
       "@ProductsRepositories": [
         "src/modules/products/typeorm/repositories/ProductsRepository.ts"
