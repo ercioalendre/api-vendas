@@ -9,7 +9,7 @@ import profileRouter from "@modules/users/routes/profile.routes";
 import customersRouter from "@modules/customers/routes/customers.routes";
 const router = express.Router();
 router.use("/users", usersRouter);
-router.use("/user/sessions", sessionsRouter);
+router.use("/sessions", sessionsRouter);
 router.use("/user/password", passwordRouter);
 router.use("/user/profile", profileRouter);
 router.use("/products", productsRouter);

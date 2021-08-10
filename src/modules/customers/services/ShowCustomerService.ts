@@ -16,10 +16,7 @@ class ShowCustomerService {
       throw new AppError("Customer was not found.", 401);
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { created_at, updated_at, ...customerData } = customer;
-
-    return customerData as Customer;
+    return customer;
   }
 }
 

@@ -1,8 +1,11 @@
 import { Router } from "express";
 import { celebrate, Segments, Joi } from "celebrate";
+import isAuthenticated from "@shared/http/middlewares/isAuthenticated";
 import customersController from "@CustomersControllers/CustomersController";
 
 const customersRouter = Router();
+
+customersRouter.use(isAuthenticated);
 
 customersRouter.get("/", customersController.index);
 
@@ -31,8 +34,8 @@ customersRouter.put(
   "/:customerId",
   celebrate({
     [Segments.BODY]: {
-      customerName: Joi.string().required(),
-      customerEmail: Joi.string().email().required(),
+      newCustomerName: Joi.string(),
+      newCustomerEmail: Joi.string().email(),
     },
     [Segments.PARAMS]: {
       customerId: Joi.string().uuid().required(),
