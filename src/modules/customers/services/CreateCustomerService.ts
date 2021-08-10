@@ -4,22 +4,25 @@ import CustomersRepository from "@CustomersRepositories/CustomersRepository";
 import AppError from "@shared/errors/AppError";
 
 interface IRequest {
-  name: string;
-  email: string;
+  customerName: string;
+  customerEmail: string;
 }
 
 class CreateCustomerService {
-  public async execute({ name, email }: IRequest): Promise<Customer> {
+  public async execute({
+    customerName,
+    customerEmail,
+  }: IRequest): Promise<Customer> {
     const customersRepository = getCustomRepository(CustomersRepository);
-    const emailExists = await customersRepository.findByEmail(email);
+    const emailExists = await customersRepository.findByEmail(customerEmail);
 
     if (emailExists) {
       throw new AppError("A customer with that email address already exists.");
     }
 
     const customer = customersRepository.create({
-      name,
-      email,
+      name: customerName,
+      email: customerEmail,
     });
 
     await customersRepository.save(customer);
