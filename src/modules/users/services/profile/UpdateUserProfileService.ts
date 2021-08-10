@@ -5,12 +5,16 @@ import AppError from "@shared/errors/AppError";
 
 interface IRequest {
   userId: string;
-  newName: string;
-  newEmail: string;
+  newUserName: string;
+  newUserEmail: string;
 }
 
 class UpdateUserProfileService {
-  public async execute({ userId, newName, newEmail }: IRequest): Promise<User> {
+  public async execute({
+    userId,
+    newUserName,
+    newUserEmail,
+  }: IRequest): Promise<User> {
     const usersRepository = getCustomRepository(UsersRepository);
     const user = await usersRepository.findById(userId);
 
@@ -18,8 +22,7 @@ class UpdateUserProfileService {
       throw new AppError("User was not found.", 401);
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const emailExists = await usersRepository.findByEmail(newEmail);
+    const emailExists = await usersRepository.findByEmail(newUserEmail);
 
     if (emailExists) {
       if (emailExists.id === userId) {
@@ -31,11 +34,13 @@ class UpdateUserProfileService {
       }
     }
 
-    if (newEmail) {
-      user.email = newEmail;
+    if (newUserEmail) {
+      user.email = newUserEmail;
     }
 
-    user.name = newName;
+    if (newUserName) {
+      user.name = newUserName;
+    }
 
     await usersRepository.save(user);
 
