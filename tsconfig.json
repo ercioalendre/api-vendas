@@ -46,6 +46,7 @@
     "moduleResolution": "node",                  /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
     "baseUrl": ".",                             /* Base directory to resolve non-absolute module names. */
     "paths": {
+      /* Main path maps */
       "@config/*": [
         "src/config/*"
       ],
@@ -61,6 +62,7 @@
       "@MainRoutes": [
         "src/shared/http/routes/index.ts"
       ],
+      /* Products path maps */
       "@ProductsEntities/*": [
         "src/modules/products/typeorm/entities/*"
       ],
@@ -76,6 +78,7 @@
       "@ProductsRoutes/*": [
         "src/modules/products/routes/*"
       ],
+      /* Users path maps */
       "@UsersEntities/*": [
         "src/modules/users/typeorm/entities/*"
       ],
@@ -85,21 +88,13 @@
       "@UsersControllers/*": [
         "src/modules/users/controllers/*"
       ],
-      "@UserAvatarController": [
-        "src/modules/users/controllers/UserAvatarController.ts"
-      ],
       "@UsersServices/*": [
         "src/modules/users/services/*"
       ],
       "@UsersRoutes/*": [
         "src/modules/users/routes/*"
       ],
-      "@SessionsController": [
-        "src/modules/users/controllers/SessionsController.ts"
-      ],
-      "@SessionsRoutes": [
-        "src/modules/users/routes/sessions.routes.ts"
-      ],
+      /* Customers path maps */
       "@CustomersEntities/*": [
         "src/modules/customers/typeorm/entities/*"
       ],
@@ -112,6 +107,10 @@
       "@CustomersControllers/*": [
         "src/modules/customers/controllers/*"
       ],
+      "@CustomersRoutes/*": [
+        "src/modules/customers/routes/*"
+      ],
+      /* Orders path maps */
       "@OrdersEntities/*": [
         "src/modules/orders/typeorm/entities/*"
       ],
