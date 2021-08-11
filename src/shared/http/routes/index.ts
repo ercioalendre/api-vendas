@@ -1,5 +1,5 @@
 import express from "express";
-import sessionsRouter from "@SessionsRoutes";
+import sessionsRouter from "@UsersRoutes/sessions.routes";
 import usersRouter from "@UsersRoutes/users.routes";
 import productsRouter from "@ProductsRoutes/products.routes";
 import uploadConfig from "@config/upload";
