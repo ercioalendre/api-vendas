@@ -111,6 +111,21 @@
       ],
       "@CustomersControllers/*": [
         "src/modules/customers/controllers/*"
+      ],
+      "@OrdersEntities/*": [
+        "src/modules/orders/typeorm/entities/*"
+      ],
+      "@OrdersRepositories/*": [
+        "src/modules/orders/typeorm/repositories/*"
+      ],
+      "@OrdersServices/*": [
+        "src/modules/orders/services/*"
+      ],
+      "@OrdersControllers/*": [
+        "src/modules/orders/controllers/*"
+      ],
+      "@OrdersRoutes/*": [
+        "src/modules/orders/routes/*"
       ]
     },                                 /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
     // "rootDirs": [],                              /* List of root folders whose combined content represents the structure of the project at runtime. */
