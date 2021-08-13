@@ -17,7 +17,7 @@ router.use("/user/password", passwordRouter);
 router.use("/user/profile", profileRouter);
 router.use("/products", productsRouter);
 router.use("/customers", customersRouter);
-router.use("/orders", ordersRouter);
+router.use("/orders", isAuthenticated, ordersRouter);
 router.use("/uploads", isAuthenticated, express.static(uploadConfig.directory));
 
 export default router;
