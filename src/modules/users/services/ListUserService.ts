@@ -6,9 +6,12 @@ class ListUserService {
   public async execute(): Promise<User[]> {
     const usersRepository = getCustomRepository(UsersRepository);
 
-    const users = usersRepository.find();
+    const users = await usersRepository.find();
 
-    return users;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const usersData = users.map(({ password, ...users }) => users);
+
+    return usersData as User[];
   }
 }
 
