@@ -26,6 +26,7 @@ or [download it here](https://github.com/ercioalendre/api-vendas/archive/refs/he
 
 ```sh
 # with npm
+$ npm i --package-lock-only
 $ npm ci
 
 # with yarn
