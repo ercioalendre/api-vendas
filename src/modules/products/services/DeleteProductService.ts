@@ -1,6 +1,7 @@
 import { getCustomRepository } from "typeorm";
 import ProductRepository from "@ProductsRepositories/ProductsRepository";
 import AppError from "@shared/errors/AppError";
+import RedisCache from "@shared/cache/RedisCache";
 
 interface IRequest {
   id: string;
@@ -19,6 +20,10 @@ class DeleteProductService {
     }
 
     await productRepository.delete(id);
+
+    const redisCache = new RedisCache();
+
+    redisCache.invalidate("api-vendas-PRODUCT_LIST");
   }
 }
 
