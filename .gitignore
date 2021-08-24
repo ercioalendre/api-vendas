@@ -6,6 +6,7 @@ temp/
 .env
 coverage
 dist
+ormlogs.log
 
 uploads/*
 !uplods/.gitkeep
