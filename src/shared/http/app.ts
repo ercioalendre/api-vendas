@@ -8,6 +8,7 @@ import AppError from "@shared/errors/AppError";
 import express, { Express, NextFunction, Request, Response } from "express";
 import { isCelebrateError } from "celebrate";
 import { pagination } from "typeorm-pagination";
+import rateLimiter from "@middlewares/rateLimiter";
 
 class AppController {
   express: Express;
@@ -19,6 +20,7 @@ class AppController {
   }
 
   middlewares() {
+    this.express.use(rateLimiter);
     this.express.use(express.json());
     this.express.use(cors());
     this.express.use(pagination);
