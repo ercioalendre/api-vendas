@@ -33,15 +33,17 @@ export default class SesMail {
     templateData,
   }: ISendMail): Promise<void> {
     const mailTemplate = new handlebarsMailTemplate();
+
     const transporter = nodemailer.createTransport({
       SES: new aws.SES({
-        apiVersion: "2010-12-01",
+        apiVersion: process.env.AWS_API_VERSION,
+        region: process.env.AWS_REGION,
       }),
     });
 
     const { email, name } = mail.defaults.from;
 
-    transporter.sendMail({
+    const mailOptions = {
       from: {
         name: from?.name || name,
         address: from?.email || email,
@@ -52,6 +54,8 @@ export default class SesMail {
       },
       subject,
       html: await mailTemplate.parse(templateData),
-    });
+    };
+
+    return transporter.sendMail(mailOptions) as any;
   }
 }

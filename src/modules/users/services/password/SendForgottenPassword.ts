@@ -23,8 +23,6 @@ class SendForgottenPassword {
 
     const { token } = await userTokensRepository.generate(user.id);
 
-    console.log(token);
-
     const forgottenPasswordTemplate = path.resolve(
       __dirname,
       "..",
@@ -34,20 +32,26 @@ class SendForgottenPassword {
     );
 
     if (mail.driver === "ses") {
-      await SesMail.sendMail({
-        to: {
-          name: user.name,
-          email: user.email,
-        },
-        subject: "[API Vendas] Password Recovery",
-        templateData: {
-          file: forgottenPasswordTemplate,
-          variables: {
+      try {
+        await SesMail.sendMail({
+          to: {
             name: user.name,
-            link: `${process.env.APP_API_URL}/password/reset/${token}`,
+            email: user.email,
           },
-        },
-      });
+          subject: "[API Vendas] Password Recovery",
+          templateData: {
+            file: forgottenPasswordTemplate,
+            variables: {
+              name: user.name,
+              link: `${process.env.APP_API_URL}/password/reset/${token}`,
+            },
+          },
+        });
+      } catch (error) {
+        throw new AppError(
+          "Error: it wasn't possible to send your recover password message",
+        );
+      }
     } else {
       await EtherealMail.sendMail({
         to: {
