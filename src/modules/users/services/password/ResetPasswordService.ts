@@ -16,7 +16,7 @@ class ResetPasswordService {
     const userTokensRepository = getCustomRepository(UserTokensRepository);
     const userToken = await userTokensRepository.findByToken(token);
 
-    if (!token) {
+    if (!token || !userToken) {
       throw new AppError("User Token was not found.", 401);
     }
 

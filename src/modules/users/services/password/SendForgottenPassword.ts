@@ -1,9 +1,11 @@
+import path from "path";
 import { getCustomRepository } from "typeorm";
 import AppError from "@shared/errors/AppError";
 import UsersRepository from "@UsersRepositories/UsersRepository";
 import UserTokensRepository from "@UsersRepositories/UserTokensRepository";
+import SesMail from "@config/mail/SesMail";
 import EtherealMail from "@config/mail/EtherealMail";
-import path from "path";
+import mail from "@config/mail/mail";
 
 interface IRequest {
   email: string;
@@ -31,20 +33,37 @@ class SendForgottenPassword {
       "forgotten-password.hbs",
     );
 
-    await EtherealMail.sendMail({
-      to: {
-        name: user.name,
-        email: user.email,
-      },
-      subject: "Password Recovery",
-      templateData: {
-        file: forgottenPasswordTemplate,
-        variables: {
+    if (mail.driver === "ses") {
+      await SesMail.sendMail({
+        to: {
           name: user.name,
-          link: `${process.env.APP_API_URL}/password/reset/${token}`,
+          email: user.email,
         },
-      },
-    });
+        subject: "[API Vendas] Password Recovery",
+        templateData: {
+          file: forgottenPasswordTemplate,
+          variables: {
+            name: user.name,
+            link: `${process.env.APP_API_URL}/password/reset/${token}`,
+          },
+        },
+      });
+    } else {
+      await EtherealMail.sendMail({
+        to: {
+          name: user.name,
+          email: user.email,
+        },
+        subject: "Password Recovery",
+        templateData: {
+          file: forgottenPasswordTemplate,
+          variables: {
+            name: user.name,
+            link: `${process.env.APP_API_URL}/password/reset/${token}`,
+          },
+        },
+      });
+    }
   }
 }
 
