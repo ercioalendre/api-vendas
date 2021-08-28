@@ -3,11 +3,11 @@ import { celebrate, Segments, Joi } from "celebrate";
 import usersController from "@UsersControllers/UsersController";
 import usersAvatarController from "@UsersControllers/UserAvatarController";
 import isAuthenticated from "@middlewares/isAuthenticated";
-import uploadConfig from "@config/upload";
+import upload from "@config/upload";
 import multer from "multer";
 
 const usersRouter = Router();
-const upload = multer(uploadConfig);
+const uploadFile = multer(upload.multer);
 
 usersRouter.get("/", isAuthenticated, usersController.index);
 
@@ -26,7 +26,7 @@ usersRouter.post(
 usersRouter.patch(
   "/avatar",
   isAuthenticated,
-  upload.single("avatar"),
+  uploadFile.single("avatar"),
   usersAvatarController.update,
 );
 
