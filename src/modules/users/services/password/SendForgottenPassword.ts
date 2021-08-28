@@ -49,7 +49,7 @@ class SendForgottenPassword {
         });
       } catch (error) {
         throw new AppError(
-          "Error: it wasn't possible to send your recover password message",
+          "Error: it wasn't possible to send your recover password message.",
         );
       }
     } else {
