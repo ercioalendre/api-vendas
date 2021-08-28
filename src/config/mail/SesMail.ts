@@ -56,6 +56,7 @@ export default class SesMail {
       html: await mailTemplate.parse(templateData),
     };
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return transporter.sendMail(mailOptions) as any;
   }
 }
