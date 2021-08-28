@@ -2,9 +2,9 @@ import { getCustomRepository } from "typeorm";
 import AppError from "@shared/errors/AppError";
 import User from "@UsersEntities/UserEntity";
 import UsersRepository from "@UsersRepositories/UsersRepository";
-import uploadConfig from "@config/upload";
-import path from "path";
-import fs from "fs";
+import upload from "@config/upload";
+import diskStorageProvider from "@shared/providers/StorageProvider/DiskStorageProvider";
+import s3StorageProvider from "@shared/providers/StorageProvider/S3StorageProvider";
 
 interface IRequest {
   userId: string | undefined;
@@ -21,16 +21,15 @@ class UpdateUserAvatarService {
       throw new AppError("User was not found.", 401);
     }
 
-    if (user.avatar) {
-      const userAvatarFilePath = path.join(uploadConfig.directory, user.avatar);
-      const userAvatarFileExists = fs.existsSync(userAvatarFilePath);
-
-      if (userAvatarFileExists) {
-        await fs.promises.unlink(userAvatarFilePath);
-      }
+    if (upload.driver === "s3") {
+      if (user.avatar) await s3StorageProvider.deleteFile(user.avatar);
+      user.avatar = await s3StorageProvider.saveFile(avatarFilename);
+    } else if (upload.driver === "local-disk") {
+      if (user.avatar) await diskStorageProvider.deleteFile(user.avatar);
+      user.avatar = await diskStorageProvider.saveFile(avatarFilename);
+    } else {
+      throw new Error("No upload driver was specified.");
     }
-
-    user.avatar = avatarFilename;
 
     await usersRepository.save(user);
 
