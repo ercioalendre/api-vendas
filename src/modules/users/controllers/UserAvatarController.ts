@@ -3,7 +3,7 @@ import updateUserAvatarService from "@UsersServices/UpdateUserAvatarService";
 
 class UserAvatarController {
   public async update(req: Request, res: Response): Promise<Response> {
-    const user = updateUserAvatarService.execute({
+    const user = await updateUserAvatarService.execute({
       userId: req.user.id,
       avatarFilename: req.file?.filename as string,
     });
