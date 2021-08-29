@@ -44,5 +44,4 @@ class UpdateProductService {
   }
 }
 
-export const updateProductService = new UpdateProductService();
-export default updateProductService;
+export default new UpdateProductService();

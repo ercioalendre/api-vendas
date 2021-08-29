@@ -21,5 +21,4 @@ class ShowProductService {
   }
 }
 
-export const showProductService = new ShowProductService();
-export default showProductService;
+export default new ShowProductService();

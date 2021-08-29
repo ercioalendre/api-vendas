@@ -33,5 +33,4 @@ class CreateProductService {
   }
 }
 
-export const createProductService = new CreateProductService();
-export default createProductService;
+export default new CreateProductService();

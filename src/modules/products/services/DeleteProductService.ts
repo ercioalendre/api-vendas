@@ -25,5 +25,4 @@ class DeleteProductService {
   }
 }
 
-export const deleteProductService = new DeleteProductService();
-export default deleteProductService;
+export default new DeleteProductService();
