@@ -40,5 +40,4 @@ class UpdateUserAvatarService {
   }
 }
 
-export const updateUserAvatarService = new UpdateUserAvatarService();
-export default updateUserAvatarService;
+export default new UpdateUserAvatarService();

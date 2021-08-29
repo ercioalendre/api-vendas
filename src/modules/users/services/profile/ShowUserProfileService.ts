@@ -23,5 +23,4 @@ class ShowUserProfileService {
   }
 }
 
-export const showUserProfileService = new ShowUserProfileService();
-export default showUserProfileService;
+export default new ShowUserProfileService();

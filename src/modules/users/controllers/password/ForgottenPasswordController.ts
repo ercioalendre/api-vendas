@@ -13,5 +13,4 @@ class ForgottenPasswordController {
   }
 }
 
-export const forgottenPasswordController = new ForgottenPasswordController();
-export default forgottenPasswordController;
+export default new ForgottenPasswordController();

@@ -22,5 +22,4 @@ class UsersController {
   }
 }
 
-export const usersController = new UsersController();
-export default usersController;
+export default new UsersController();

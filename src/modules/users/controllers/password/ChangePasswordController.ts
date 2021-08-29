@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { changePasswordService } from "@UsersServices/password/ChangePasswordService";
+import changePasswordService from "@UsersServices/password/ChangePasswordService";
 
 class ChangePasswordController {
   public async update(req: Request, res: Response): Promise<Response> {
@@ -17,5 +17,4 @@ class ChangePasswordController {
   }
 }
 
-export const changePasswordController = new ChangePasswordController();
-export default changePasswordController;
+export default new ChangePasswordController();

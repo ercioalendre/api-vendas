@@ -51,5 +51,4 @@ class UpdateUserProfileService {
   }
 }
 
-export const updateUserProfileService = new UpdateUserProfileService();
-export default updateUserProfileService;
+export default new UpdateUserProfileService();

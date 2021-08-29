@@ -49,5 +49,4 @@ class CreateSessionsService {
   }
 }
 
-export const createSessionsService = new CreateSessionsService();
-export default createSessionsService;
+export default new CreateSessionsService();

@@ -71,5 +71,4 @@ class SendForgottenPassword {
   }
 }
 
-export const sendForgottenPasswordService = new SendForgottenPassword();
-export default sendForgottenPasswordService;
+export default new SendForgottenPassword();

@@ -15,5 +15,4 @@ class ResetPasswordController {
   }
 }
 
-export const resetPasswordController = new ResetPasswordController();
-export default resetPasswordController;
+export default new ResetPasswordController();

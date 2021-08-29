@@ -12,5 +12,4 @@ class UserAvatarController {
   }
 }
 
-export const usersAvatarController = new UserAvatarController();
-export default usersAvatarController;
+export default new UserAvatarController();

@@ -14,5 +14,4 @@ class SessionsController {
   }
 }
 
-export const sessionsController = new SessionsController();
-export default sessionsController;
+export default new SessionsController();
