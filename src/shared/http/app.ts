@@ -9,6 +9,7 @@ import express, { Express, NextFunction, Request, Response } from "express";
 import { isCelebrateError } from "celebrate";
 import { pagination } from "typeorm-pagination";
 import rateLimiter from "@middlewares/rateLimiter";
+import multer from "multer";
 
 class AppController {
   express: Express;
@@ -48,6 +49,16 @@ class AppController {
             status: "error",
             message: celebrateErrorMessage,
           });
+        }
+        if (error instanceof multer.MulterError) {
+          if (error.code === "LIMIT_FILE_SIZE") {
+            return res.status(401).json({
+              status: "error",
+              message: `The file you are trying to send is too big (${
+                process.env.UPLOAD_FILE_MAX_SIZE || "2"
+              } MB max).`,
+            });
+          }
         }
         console.log(error);
         return res.status(500).json({
