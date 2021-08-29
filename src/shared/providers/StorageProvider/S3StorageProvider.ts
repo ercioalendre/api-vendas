@@ -25,17 +25,26 @@ class S3StorageProvider {
 
     const fileContent = await fs.promises.readFile(originalPath);
 
-    await this.client
-      .putObject({
-        Bucket: upload.settings.aws.bucket,
-        Key: file,
-        ACL: "public-read",
-        Body: fileContent,
-        ContentType,
-      })
-      .promise();
+    try {
+      await this.client
+        .putObject({
+          Bucket: upload.settings.aws.bucket,
+          Key: file,
+          ACL: "public-read",
+          Body: fileContent,
+          ContentType,
+        })
+        .promise();
+    } catch (error) {
+      throw new Error("We couldn't upload the file on S3.");
+    }
 
-    await fs.promises.unlink(originalPath);
+    try {
+      await fs.promises.stat(originalPath);
+      await fs.promises.unlink(originalPath);
+    } catch {
+      throw new Error("We couldn't delete temp file.");
+    }
 
     return file;
   }
