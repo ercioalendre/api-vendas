@@ -84,5 +84,4 @@ class CreateOrderService {
   }
 }
 
-export const createOrderService = new CreateOrderService();
-export default createOrderService;
+export default new CreateOrderService();
