@@ -23,5 +23,4 @@ class ListCustomersService {
   }
 }
 
-export const listCustomersService = new ListCustomersService();
-export default listCustomersService;
+export default new ListCustomersService();

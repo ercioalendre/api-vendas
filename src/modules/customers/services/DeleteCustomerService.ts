@@ -22,5 +22,4 @@ class DeleteCustomerService {
   }
 }
 
-export const deleteCustomerService = new DeleteCustomerService();
-export default deleteCustomerService;
+export default new DeleteCustomerService();

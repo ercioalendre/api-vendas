@@ -44,5 +44,4 @@ class CustomersController {
   }
 }
 
-export const customersController = new CustomersController();
-export default customersController;
+export default new CustomersController();

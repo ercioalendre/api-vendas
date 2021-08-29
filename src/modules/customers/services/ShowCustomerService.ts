@@ -20,5 +20,4 @@ class ShowCustomerService {
   }
 }
 
-export const showCustomerService = new ShowCustomerService();
-export default showCustomerService;
+export default new ShowCustomerService();
