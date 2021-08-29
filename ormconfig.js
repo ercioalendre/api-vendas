@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   type: process.env.APP_DB_TYPE,
   host: process.env.APP_DB_HOST,
   port: process.env.APP_DB_PORT,
@@ -8,9 +8,9 @@ export default {
   synchronize: false,
   // "logging": true,
   logger: "file",
-  entities: ["./src/modules/**/typeorm/entities/*.ts"],
-  migrations: ["./src/shared/typeorm/migrations/*.ts"],
+  entities: ["./build/modules/**/typeorm/entities/*.js"],
+  migrations: ["./build/shared/typeorm/migrations/*.js"],
   cli: {
-    migrationsDir: "./src/shared/typeorm/migrations",
+    migrationsDir: "./build/shared/typeorm/migrations",
   },
 };
