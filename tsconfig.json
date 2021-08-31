@@ -12,6 +12,9 @@
     "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
+      "@tests/*": [
+        "src/__tests__/*"
+      ],
       "@config/*": [
         "src/config/*"
       ],
