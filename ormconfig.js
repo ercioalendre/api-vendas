@@ -8,9 +8,9 @@ module.exports = {
   synchronize: false,
   // "logging": true,
   logger: "file",
-  entities: ["./build/modules/**/typeorm/entities/*.js"],
-  migrations: ["./build/shared/typeorm/migrations/*.js"],
+  entities: ["./src/modules/**/typeorm/entities/*.{js,ts}"],
+  migrations: ["./src/shared/typeorm/migrations/*.{js,ts}"],
   cli: {
-    migrationsDir: "./build/shared/typeorm/migrations",
+    migrationsDir: "./src/shared/typeorm/migrations",
   },
 };
