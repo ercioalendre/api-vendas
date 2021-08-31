@@ -9,7 +9,8 @@
     "lint": "eslint . --ext .ts",
     "lint-fix": "eslint . --ext .ts --fix",
     "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
-    "build": "babel src --extensions \".js,.ts\" --out-dir build --copy-files"
+    "build": "babel src --extensions \".js,.ts\" --out-dir build --copy-files",
+    "test": "jest"
   },
   "devDependencies": {
     "@babel/cli": "^7.14.8",
@@ -39,6 +40,7 @@
     "eslint-plugin-prettier": "3.2.0",
     "jest": "^27.1.0",
     "prettier": "^2.2.1",
+    "ts-jest": "^27.0.5",
     "ts-node-dev": "^1.1.6",
     "tsconfig-paths": "^3.10.1",
     "typescript": "^4.2.3"
