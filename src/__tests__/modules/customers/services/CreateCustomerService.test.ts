@@ -20,6 +20,6 @@ describe("Create customer service tests", () => {
       customerName: "Ercio Alendre",
       customerEmail: "ercio.alendre@gmail.com",
     });
-    expect(customer).toHaveProperty("customerId");
+    expect(customer).toHaveProperty("id");
   });
 });
