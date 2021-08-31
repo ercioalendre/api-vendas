@@ -15,12 +15,13 @@ class Order {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
-  @ManyToOne(() => Customer)
+  @ManyToOne(() => Customer, { onDelete: "CASCADE" })
   @JoinColumn({ name: "customer_id" })
   customer: Customer;
 
   @OneToMany(() => OrdersProducts, order_products => order_products.order, {
     cascade: true,
+    onDelete: "CASCADE",
   })
   order_products: OrdersProducts[];
 

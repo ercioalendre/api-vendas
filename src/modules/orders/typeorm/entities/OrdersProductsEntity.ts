@@ -15,11 +15,15 @@ class OrdersProducts {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
-  @ManyToOne(() => Order, order => order.order_products)
+  @ManyToOne(() => Order, order => order.order_products, {
+    onDelete: "CASCADE",
+  })
   @JoinColumn({ name: "order_id" })
   order: Order;
 
-  @ManyToOne(() => Product, product => product.order_products)
+  @ManyToOne(() => Product, product => product.order_products, {
+    onDelete: "CASCADE",
+  })
   @JoinColumn({ name: "product_id" })
   product: Product;
 
