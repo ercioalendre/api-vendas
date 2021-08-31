@@ -4,8 +4,9 @@ node_modules/
 build/
 temp/
 logs/
+coverage/
+
 .env
-coverage
 dist
 ormlogs.log
 yarn-error.log
