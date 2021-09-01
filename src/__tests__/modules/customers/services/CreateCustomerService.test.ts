@@ -26,15 +26,28 @@ describe("Create customer service tests", () => {
 
   it("should not create a new customer", async () => {
     await createCustomerService.execute({
-      customerName: "Test Customer",
-      customerEmail: "testcustomer@apivendas.com",
+      customerName: "Test [2] Customer",
+      customerEmail: "testcustomer2@apivendas.com",
     });
 
-    const customer = await createCustomerService.execute({
-      customerName: "Test Customer",
-      customerEmail: "testcustomer@apivendas.com",
-    });
+    const customer = async () => {
+      await createCustomerService.execute({
+        customerName: "Test [2] Customer",
+        customerEmail: "testcustomer2@apivendas.com",
+      });
+    };
 
-    expect(customer).rejects.toBeInstanceOf(AppError);
+    console.log(customer);
+
+    // expect(customer).toBeFalsy();
+
+    // expect.assertions(1);
+    // try {
+    //   customer;
+    // } catch (error) {
+    //   console.log(error);
+    //   expect(error).toEqual(AppError);
+    // }
+    // expect(1 + 1).toBe(2);
   });
 });
