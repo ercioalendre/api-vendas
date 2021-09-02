@@ -10,6 +10,19 @@ import { isCelebrateError } from "celebrate";
 import { pagination } from "typeorm-pagination";
 import rateLimiter from "@middlewares/rateLimiter";
 import multer from "multer";
+import { isOperationalError } from "@shared/errors/AppError";
+
+process.on("unhandledRejection", error => {
+  throw error;
+});
+
+process.on("uncaughtException", error => {
+  console.error(error);
+
+  if (!isOperationalError(error)) {
+    process.exit(1);
+  }
+});
 
 class AppController {
   express: Express;

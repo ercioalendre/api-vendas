@@ -1,43 +1,43 @@
 import "reflect-metadata";
+import request from "supertest";
+import app from "@shared/http/app";
 import connection from "@tests/TypeORM.connection";
-import createCustomerService from "@CustomersServices/CreateCustomerService";
-import AppError from "@shared/errors/AppError";
-import { getCustomRepository } from "typeorm";
-import CustomersRepository from "@modules/customers/typeorm/repositories/CustomersRepository";
 
-beforeAll(async () => {
-  await connection.create();
-  await connection.clear();
-});
+// beforeAll(async () => {
+//   await connection.create();
+// });
 
-afterAll(async () => {
-  await connection.clear();
-  await connection.close();
-});
+// afterAll(async () => {
+//   await connection.close();
+// });
 
-beforeEach(async () => {
-  await connection.clear();
-});
+// beforeEach(async () => {
+//   // await connection.clear();
+// });
 
 describe("Create customer service tests", () => {
-  // it("should create a new customer", async () => {
-  //   const customer = await createCustomerService.execute({
-  //     customerName: "Test Customer",
-  //     customerEmail: "testcustomer@apivendas.com",
-  //   });
-  //   expect(customer).toHaveProperty("id");
-  // });
-
-  it("should not create a new customer", async () => {
-    async function createCustomer() {
-      await createCustomerService.execute({
-        customerName: "Test [2] Customer",
-        customerEmail: "testcustomer@apivendas.com",
-      });
-    }
-
-    expect(createCustomer()).resolves.toHaveProperty("id");
-
-    // expect(createCustomer()).resolves.toHaveProperty("id");
+  it("should create a new customer", async () => {
+    const createNewUser = await request(app).post("/users").send({
+      name: "No Reply",
+      email: "no-reply@ercioalendre.one",
+      password: "Str0ngP@sswo4d!",
+    });
+    expect(createNewUser.status).toBe(200);
   });
+  // it("responds with json", function (done) {
+  //   request(app)
+  //     .post("/users")
+  //     .send({
+  //       name: "No Reply",
+  //       email: "no-reply@ercioalendre.one",
+  //       password: "Str0ngP@sswo4d!",
+  //     })
+  //     .set("Accept", "application/json")
+  //     .expect("Content-Type", /json/)
+  //     .expect(200)
+  //     .end(function (err, res) {
+  //       if (err) return done(err);
+  //       return done();
+  //     });
+  // });
 });

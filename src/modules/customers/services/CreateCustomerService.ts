@@ -2,6 +2,7 @@ import { getCustomRepository } from "typeorm";
 import Customer from "@CustomersEntities/CustomerEntity";
 import CustomersRepository from "@CustomersRepositories/CustomersRepository";
 import AppError from "@shared/errors/AppError";
+import EmailValidator from "email-validator";
 
 interface IRequest {
   customerName: string;
@@ -15,9 +16,14 @@ class CreateCustomerService {
   }: IRequest): Promise<Customer> {
     const customersRepository = getCustomRepository(CustomersRepository);
     const emailExists = await customersRepository.findByEmail(customerEmail);
+    const isValidEmail = EmailValidator.validate(customerEmail);
 
     if (emailExists) {
       throw new AppError("A customer with that email address already exists.");
+    }
+
+    if (!isValidEmail) {
+      throw new AppError("The email address you entered is invalid.");
     }
 
     const customer = customersRepository.create({
