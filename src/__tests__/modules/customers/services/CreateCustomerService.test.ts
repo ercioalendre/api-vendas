@@ -2,12 +2,16 @@ import "reflect-metadata";
 import connection from "@tests/TypeORM.connection";
 import createCustomerService from "@CustomersServices/CreateCustomerService";
 import AppError from "@shared/errors/AppError";
+import { getCustomRepository } from "typeorm";
+import CustomersRepository from "@modules/customers/typeorm/repositories/CustomersRepository";
 
 beforeAll(async () => {
   await connection.create();
+  await connection.clear();
 });
 
 afterAll(async () => {
+  await connection.clear();
   await connection.close();
 });
 
@@ -16,38 +20,24 @@ beforeEach(async () => {
 });
 
 describe("Create customer service tests", () => {
-  it("should create a new customer", async () => {
-    const customer = await createCustomerService.execute({
-      customerName: "Test Customer",
-      customerEmail: "testcustomer@apivendas.com",
-    });
-    expect(customer).toHaveProperty("id");
-  });
+  // it("should create a new customer", async () => {
+  //   const customer = await createCustomerService.execute({
+  //     customerName: "Test Customer",
+  //     customerEmail: "testcustomer@apivendas.com",
+  //   });
+  //   expect(customer).toHaveProperty("id");
+  // });
 
   it("should not create a new customer", async () => {
-    await createCustomerService.execute({
-      customerName: "Test [2] Customer",
-      customerEmail: "testcustomer2@apivendas.com",
-    });
-
-    const customer = async () => {
+    async function createCustomer() {
       await createCustomerService.execute({
         customerName: "Test [2] Customer",
-        customerEmail: "testcustomer2@apivendas.com",
+        customerEmail: "testcustomer@apivendas.com",
       });
-    };
+    }
 
-    console.log(customer);
+    expect(createCustomer()).resolves.toHaveProperty("id");
 
-    // expect(customer).toBeFalsy();
-
-    // expect.assertions(1);
-    // try {
-    //   customer;
-    // } catch (error) {
-    //   console.log(error);
-    //   expect(error).toEqual(AppError);
-    // }
-    // expect(1 + 1).toBe(2);
+    // expect(createCustomer()).resolves.toHaveProperty("id");
   });
 });
