@@ -37,18 +37,34 @@
 
 // export default AppError;
 
+export function isOperationalError(error: Error): boolean {
+  if (error instanceof AppError) {
+    return error.OperationalError;
+  }
+  return false;
+}
+
 class AppError extends Error {
   public readonly message: string;
   public readonly statusCode: number;
+  public readonly OperationalError: boolean;
 
-  constructor(message: string, statusCode = 400) {
+  constructor(message: string, statusCode = 400, OperationalError = true) {
     super(message);
 
     Object.setPrototypeOf(this, new.target.prototype);
     this.message = message;
     this.statusCode = statusCode;
+    this.OperationalError = OperationalError;
     Error.captureStackTrace(this);
     // console.log(message, statusCode);
+  }
+
+  public isOperationalError(error: Error): boolean {
+    if (error instanceof AppError) {
+      return error.OperationalError;
+    }
+    return false;
   }
 }
 
