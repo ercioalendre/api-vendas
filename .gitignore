@@ -16,3 +16,6 @@ uploads/*
 
 temp/*
 !temp/.gitkeep
+
+.docker/dbdata/*
+!.docker/dbdata/.gitkeep
