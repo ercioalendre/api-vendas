@@ -1,43 +1,58 @@
 import "reflect-metadata";
-import request from "supertest";
-import app from "@shared/http/app";
 import connection from "@tests/TypeORM.connection";
+import createCustomerService from "@CustomersServices/CreateCustomerService";
+import AppError from "@shared/errors/AppError";
 
-// beforeAll(async () => {
-//   await connection.create();
-// });
+beforeAll(async () => {
+  await connection.create();
+});
 
-// afterAll(async () => {
-//   await connection.close();
-// });
+afterAll(async () => {
+  await connection.close();
+});
 
-// beforeEach(async () => {
-//   // await connection.clear();
-// });
+beforeEach(async () => {
+  // await connection.clear();
+});
 
 describe("Create customer service tests", () => {
-  it("should create a new customer", async () => {
-    const createNewUser = await request(app).post("/users").send({
-      name: "No Reply",
-      email: "no-reply@ercioalendre.one",
-      password: "Str0ngP@sswo4d!",
-    });
-    expect(createNewUser.status).toBe(200);
+  it("should create a new customer", () => {
+    const customer = Promise.resolve(
+      createCustomerService.execute({
+        customerName: "Testing",
+        customerEmail: "testing@apivendas.com.br",
+      }),
+    );
+
+    return expect(customer).resolves.toHaveProperty("id");
   });
-  // it("responds with json", function (done) {
-  //   request(app)
-  //     .post("/users")
-  //     .send({
-  //       name: "No Reply",
-  //       email: "no-reply@ercioalendre.one",
-  //       password: "Str0ngP@sswo4d!",
-  //     })
-  //     .set("Accept", "application/json")
-  //     .expect("Content-Type", /json/)
-  //     .expect(200)
-  //     .end(function (err, res) {
-  //       if (err) return done(err);
-  //       return done();
-  //     });
-  // });
+
+  it("should not create a new customer: invalid email", () => {
+    const customer = Promise.resolve(
+      createCustomerService.execute({
+        customerName: "Testing [2]",
+        customerEmail: "",
+      }),
+    );
+
+    return expect(customer).rejects.toBeInstanceOf(AppError);
+  });
+
+  it("should not create a new customer: email already exists", () => {
+    async () => {
+      await createCustomerService.execute({
+        customerName: "Testing [3]",
+        customerEmail: "testing@apivendas.com.br",
+      });
+    };
+
+    const customer = Promise.resolve(
+      createCustomerService.execute({
+        customerName: "Testing [3]",
+        customerEmail: "testing@apivendas.com.br",
+      }),
+    );
+
+    return expect(customer).rejects.toBeInstanceOf(AppError);
+  });
 });

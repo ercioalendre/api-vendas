@@ -4,13 +4,12 @@ import "@shared/typeorm";
 import "express-async-errors";
 import cors from "cors";
 import routes from "@MainRoutes";
-import AppError from "@shared/errors/AppError";
+import AppError, { isOperationalError } from "@shared/errors/AppError";
 import express, { Express, NextFunction, Request, Response } from "express";
 import { isCelebrateError } from "celebrate";
 import { pagination } from "typeorm-pagination";
 import rateLimiter from "@middlewares/rateLimiter";
 import multer from "multer";
-import { isOperationalError } from "@shared/errors/AppError";
 
 process.on("unhandledRejection", error => {
   throw error;

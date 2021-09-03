@@ -18,12 +18,12 @@ class CreateCustomerService {
     const emailExists = await customersRepository.findByEmail(customerEmail);
     const isValidEmail = EmailValidator.validate(customerEmail);
 
-    if (emailExists) {
-      throw new AppError("A customer with that email address already exists.");
-    }
-
     if (!isValidEmail) {
       throw new AppError("The email address you entered is invalid.");
+    }
+
+    if (emailExists) {
+      throw new AppError("A customer with that email address already exists.");
     }
 
     const customer = customersRepository.create({

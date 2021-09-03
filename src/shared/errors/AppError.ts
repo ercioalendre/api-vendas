@@ -37,6 +37,8 @@
 
 // export default AppError;
 
+// =======================================================================
+
 export function isOperationalError(error: Error): boolean {
   if (error instanceof AppError) {
     return error.OperationalError;
@@ -57,15 +59,14 @@ class AppError extends Error {
     this.statusCode = statusCode;
     this.OperationalError = OperationalError;
     Error.captureStackTrace(this);
-    // console.log(message, statusCode);
   }
 
-  public isOperationalError(error: Error): boolean {
-    if (error instanceof AppError) {
-      return error.OperationalError;
-    }
-    return false;
-  }
+  // public isOperationalError(error: Error): boolean {
+  //   if (error instanceof AppError) {
+  //     return error.OperationalError;
+  //   }
+  //   return false;
+  // }
 }
 
 export default AppError;
