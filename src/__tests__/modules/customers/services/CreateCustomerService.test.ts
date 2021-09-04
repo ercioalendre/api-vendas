@@ -1,5 +1,5 @@
 import "reflect-metadata";
-import connection from "@tests/TypeORM.connection";
+import connection from "src/__tests__/TypeORM.connection";
 import createCustomerService from "@CustomersServices/CreateCustomerService";
 import AppError from "@shared/errors/AppError";
 
