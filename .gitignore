@@ -2,8 +2,6 @@
 .vscode/
 node_modules/
 build/
-temp/
-logs/
 coverage/
 
 .env
@@ -16,6 +14,9 @@ uploads/*
 
 temp/*
 !temp/.gitkeep
+
+logs/*
+!logs/.gitkeep
 
 .docker/dbdata/*
 !.docker/dbdata/.gitkeep

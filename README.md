@@ -7,9 +7,16 @@
 This project was developed with the following technologies:
 
 - TypeScript
-- NodeJS
+- Node.js
 - Express
 - Postgres
+- TypeORM
+- JWT
+- Multer
+- Redis
+- Amazon SES
+- Amazon S3
+- Docker Compose
 
 ## 🧰 Setup
 
@@ -22,7 +29,17 @@ $ cd api-vendas
 
 or [download it here](https://github.com/ercioalendre/api-vendas/archive/refs/heads/main.zip).
 
-#### 2. Install necessary dependencies
+#### 2. Docker Compose
+
+```sh
+$ docker-compose up
+```
+
+That's it! You can now see it up and running on [http://localhost:3000](http://localhost:3000)
+
+### OR
+
+#### 3. Install necessary dependencies
 
 ```sh
 # with npm
@@ -34,7 +51,7 @@ $ rm -rf node_modules
 $ yarn install --frozen-lockfile
 ```
 
-#### 3. Start the server
+#### 4. Start the server
 
 ```sh
 # with npm
@@ -44,7 +61,7 @@ npm run dev
 yarn dev
 ```
 
-#### 4. All set and done
+#### 5. All set and done
 
 That's it! You can now see it up and running on [http://localhost:3000](http://localhost:3000)
 
